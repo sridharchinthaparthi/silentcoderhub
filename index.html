@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SilentCoderHub Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="/" class="logo">SilentCoderHub</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Blog Posts Section -->
+        <main class="blog-posts">
+            <div class="blog-header">
+                <h1>SilentCoderHub Insights</h1>
+                <p>Your daily dose of technology, programming, and digital innovation</p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search posts...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+
+            <!-- Posts will be dynamically loaded here -->
+            <div id="posts-container" class="posts-grid">
+                <!-- Posts will be populated by JavaScript -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button id="loadMoreBtn" class="load-more-btn">Load More Posts</button>
+            </div>
+
+            <!-- No posts message -->
+            <div id="noPosts" class="no-posts" style="display: none;">
+                <i class="fas fa-inbox"></i>
+                <h3>No posts found</h3>
+                <p>Try adjusting your search terms or check back later for new content.</p>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- About Widget -->
+            <div class="widget">
+                <h3><i class="fas fa-user-circle"></i> About</h3>
+                <img src="assets/logo.png" alt="Profile" class="profile-img">
+                <p class="about-text">
+                    Welcome to my SilentCoderHub blog! I share insights about programming, web development, 
+                    AI, and the latest technology trends. Join me on this journey of continuous learning.
+                </p>
+                <div class="social-links">
+                    <!-- <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a> -->
+                    <a href="https://www.instagram.com/silentcoderhub/" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@SilentCoderHub" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <!-- <a href="#" title="GitHub"><i class="fab fa-github"></i></a> -->
+                    <a href="mailto:silentcoderhub@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <!-- Stats Widget -->
+            <div class="widget">
+                <h3><i class="fas fa-chart-bar"></i> Blog Stats</h3>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalPosts">0</span>
+                        <span class="stat-label">Total Posts</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="thisMonth">0</span>
+                        <span class="stat-label">This Month</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalViews">1.2K</span>
+                        <span class="stat-label">Total Views</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="widget">
+                <h3><i class="fas fa-folder-open"></i> Categories</h3>
+                <div class="category-list" id="categoryList">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Recent Posts Widget -->
+            <div class="widget">
+                <h3><i class="fas fa-clock"></i> Recent Posts</h3>
+                <ul class="recent-posts" id="recentPostsList">
+                    <!-- Recent posts will be populated by JavaScript -->
+                </ul>
+            </div>
+
+            <!-- Tags Widget -->
+            <div class="widget">
+                <h3><i class="fas fa-tags"></i> Popular Tags</h3>
+                <div class="tags" id="tagsList">
+                    <!-- Tags will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Newsletter Widget -->
+            <div class="widget">
+                <h3><i class="fas fa-envelope"></i> Subscribe</h3>
+                <p>Get notified about new posts!</p>
+                <form id="subscribeForm">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SilentCoderHub Blog</h4>
+                <p>Sharing knowledge, one post at a time.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Me</h4>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/silentcoderhub/" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@SilentCoderHub" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="mailto:silentcoderhub@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <!-- <a href="#"><i class="fab fa-github"></i></a> -->
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SilentCoderHub Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

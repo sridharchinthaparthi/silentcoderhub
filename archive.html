@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive - SilentCoderHub</title>
+    
+    <meta name="description" content="Browse all posts from SilentCoderHub. Find articles by category, date, or search for specific topics.">
+    <meta name="keywords" content="SilentCoderHub, Archive, Blog Posts, Technology, Programming, Web Development">
+    <meta name="author" content="SilentCoderHub">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--background-light), var(--background));
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .archive-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: var(--background);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+        }
+        
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        .archive-filters {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-section {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+        
+        .search-section {
+            grid-column: span 2;
+        }
+        
+        .search-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background: var(--background-light);
+            transition: var(--transition);
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+        }
+        
+        .search-box button {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+        }
+        
+        .filter-group {
+            margin-bottom: 2rem;
+        }
+        
+        .filter-group h4 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .filter-tag {
+            background: var(--background-light);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .filter-tag.active {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .filter-tag:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .date-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .date-filter select {
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: var(--background-light);
+            color: var(--text-color);
+        }
+        
+        .clear-filters {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: var(--transition);
+        }
+        
+        .clear-filters:hover {
+            background: #2f855a;
+        }
+        
+        .archive-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+        }
+        
+        .posts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .archive-post {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .archive-post:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .archive-post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+        
+        .archive-post-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            min-width: 150px;
+        }
+        
+        .archive-post-date {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .archive-post-category {
+            background: var(--background-light);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .archive-post-content {
+            flex: 1;
+        }
+        
+        .archive-post-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        
+        .archive-post-title a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .archive-post-title a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .archive-post-excerpt {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .archive-post-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .archive-post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .read-time {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .read-more-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: var(--transition);
+        }
+        
+        .read-more-link:hover {
+            color: var(--primary-color);
+            transform: translateX(2px);
+        }
+        
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .sidebar-widget {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+        
+        .sidebar-widget h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .timeline-list {
+            list-style: none;
+        }
+        
+        .timeline-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+        
+        .timeline-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .timeline-item a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .timeline-count {
+            background: var(--background-light);
+            color: var(--text-light);
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-light);
+            background: var(--background);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+        }
+        
+        .no-results i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        
+        @media (max-width: 1024px) {
+            .archive-filters,
+            .archive-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-section {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .archive-stats {
+                gap: 1rem;
+            }
+            
+            .stat-item {
+                padding: 0.75rem 1rem;
+            }
+            
+            .archive-post {
+                padding: 1.5rem;
+            }
+            
+            .archive-post-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .archive-post-meta {
+                flex-direction: row;
+                gap: 0.5rem;
+                min-width: auto;
+            }
+            
+            .date-filter {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="logo">SilentCoderHub</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="archive.html" class="active">Archive</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <div class="page-header">
+            <h1 class="page-title">Post Archive</h1>
+            <p class="page-subtitle">Browse all posts by category, date, or search for specific topics</p>
+            
+            <div class="archive-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalPosts">0</span>
+                    <span class="stat-label">Total Posts</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalCategories">0</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalTags">0</span>
+                    <span class="stat-label">Tags</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="archive-filters">
+            <div class="filter-section search-section">
+                <h3><i class="fas fa-search"></i> Search Posts</h3>
+                <div class="search-box">
+                    <input type="text" id="archiveSearch" placeholder="Search by title, content, or tags...">
+                    <button type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <div class="filter-group">
+                    <h4><i class="fas fa-folder"></i> Categories</h4>
+                    <div class="category-filters" id="categoryFilters">
+                        <div class="filter-tag active" data-category="all">All</div>
+                        <!-- Categories will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h4><i class="fas fa-calendar"></i> Date Range</h4>
+                    <div class="date-filter">
+                        <select id="yearFilter">
+                            <option value="">All Years</option>
+                        </select>
+                        <select id="monthFilter">
+                            <option value="">All Months</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="clear-filters" id="clearFilters">
+                    <i class="fas fa-times"></i> Clear Filters
+                </button>
+            </div>
+        </div>
+
+        <div class="archive-content">
+            <div class="posts-list" id="postsList">
+                <!-- Posts will be populated by JavaScript -->
+            </div>
+            
+            <div class="sidebar">
+                <div class="sidebar-widget">
+                    <h3><i class="fas fa-chart-bar"></i> Categories</h3>
+                    <ul class="timeline-list" id="categoriesList">
+                        <!-- Categories will be populated -->
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3><i class="fas fa-calendar-alt"></i> Archive by Date</h3>
+                    <ul class="timeline-list" id="dateArchive">
+                        <!-- Date archive will be populated -->
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3><i class="fas fa-tags"></i> Popular Tags</h3>
+                    <div class="category-filters" id="popularTags">
+                        <!-- Popular tags will be populated -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SilentCoderHub Blog</h4>
+                <p>Sharing knowledge, one post at a time.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Me</h4>
+                <div class="footer-social">
+                    <<a href="https://www.instagram.com/silentcoderhub/" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@SilentCoderHub" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <!-- <a href="#" title="GitHub"><i class="fab fa-github"></i></a> -->
+                    <a href="mailto:silentcoderhub@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SilentCoderHub Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top show">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // Archive page functionality
+        let allPosts = [];
+        let filteredPosts = [];
+        let currentFilters = {
+            search: '',
+            category: 'all',
+            year: '',
+            month: ''
+        };
+
+        // Initialize archive page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPosts();
+            setupEventListeners();
+        });
+
+        // Load posts data
+        async function loadPosts() {
+            try {
+                // Try to load from posts.json first
+                const response = await fetch('./posts/posts.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    allPosts = data.posts || [];
+                } else {
+                    // Fallback to sample data
+                    allPosts = getSamplePosts();
+                }
+                
+                filteredPosts = [...allPosts];
+                updateStats();
+                displayPosts();
+                populateFilters();
+                populateSidebar();
+            } catch (error) {
+                console.error('Error loading posts:', error);
+                allPosts = getSamplePosts();
+                filteredPosts = [...allPosts];
+                updateStats();
+                displayPosts();
+                populateFilters();
+                populateSidebar();
+            }
+        }
+
+        // Sample posts for fallback
+        function getSamplePosts() {
+            return [
+                {
+                    id: 'post-what-exactly-is-a-computer',
+                    title: 'What Exactly is a Computer? Understanding the Essentials',
+                    excerpt: 'Ever wondered what defines a computer? Let\'s dive into its core functions, key features, and its remarkable place in both work and life.',
+                    date: '2025-09-23',
+                    category: 'Computer Basics',
+                    tags: ['Computer Science', 'Technology', 'Hardware', 'Basics'],
+                    author: 'SilentCoderHub',
+                    readTime: '6 min read',
+                    slug: 'what-exactly-is-a-computer'
+                },
+                {
+                    id: 'post-input-vs-output-devices',
+                    title: 'Input vs Output Devices Explained: How Data Flows Between User and Machine',
+                    excerpt: 'Delve into the fascinating relationship between input and output devices. See how they enable our interaction with computers one keystroke, one pixel at a time!',
+                    date: '2025-09-24',
+                    category: 'Computer Hardware',
+                    tags: ['Input Devices', 'Output Devices', 'Computer Hardware', 'I/O Devices'],
+                    author: 'SilentCoderHub',
+                    readTime: '8 min read',
+                    slug: 'input-vs-output-devices-explained'
+                }
+            ];
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search
+            document.getElementById('archiveSearch').addEventListener('input', handleSearch);
+            
+            // Category filters
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('filter-tag') && e.target.hasAttribute('data-category')) {
+                    handleCategoryFilter(e.target.getAttribute('data-category'));
+                    updateActiveFilter(e.target, '.filter-tag');
+                }
+            });
+            
+            // Date filters
+            document.getElementById('yearFilter').addEventListener('change', handleDateFilter);
+            document.getElementById('monthFilter').addEventListener('change', handleDateFilter);
+            
+            // Clear filters
+            document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
+            
+            // Mobile navigation
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        }
+
+        // Update statistics
+        function updateStats() {
+            const categories = new Set(allPosts.map(post => post.category));
+            const tags = new Set();
+            allPosts.forEach(post => post.tags.forEach(tag => tags.add(tag)));
+            
+            document.getElementById('totalPosts').textContent = allPosts.length;
+            document.getElementById('totalCategories').textContent = categories.size;
+            document.getElementById('totalTags').textContent = tags.size;
+        }
+
+        // Display posts
+        function displayPosts() {
+            const postsList = document.getElementById('postsList');
+            
+            if (filteredPosts.length === 0) {
+                postsList.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>No posts found</h3>
+                        <p>Try adjusting your filters or search terms.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            postsList.innerHTML = filteredPosts.map(post => `
+                <article class="archive-post">
+                    <div class="archive-post-header">
+                        <div class="archive-post-content">
+                            <h2 class="archive-post-title">
+                                <a href="posts/${post.slug}.html">${post.title}</a>
+                            </h2>
+                        </div>
+                        <div class="archive-post-meta">
+                            <div class="archive-post-date">${formatDate(post.date)}</div>
+                            <div class="archive-post-category">${post.category}</div>
+                        </div>
+                    </div>
+                    <p class="archive-post-excerpt">${post.excerpt}</p>
+                    <div class="archive-post-tags">
+                        ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    <div class="archive-post-footer">
+                        <div class="read-time">
+                            <i class="fas fa-clock"></i>
+                            ${post.readTime}
+                        </div>
+                        <a href="posts/${post.slug}.html" class="read-more-link">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Populate filters
+        function populateFilters() {
+            const categories = [...new Set(allPosts.map(post => post.category))].sort();
+            const years = [...new Set(allPosts.map(post => post.date.split('-')[0]))].sort().reverse();
+            
+            // Category filters
+            const categoryFilters = document.getElementById('categoryFilters');
+            const existingAll = categoryFilters.querySelector('[data-category="all"]');
+            categoryFilters.innerHTML = '';
+            categoryFilters.appendChild(existingAll);
+            
+            categories.forEach(category => {
+                const filterTag = document.createElement('div');
+                filterTag.className = 'filter-tag';
+                filterTag.setAttribute('data-category', category);
+                filterTag.textContent = category;
+                categoryFilters.appendChild(filterTag);
+            });
+            
+            // Year filter
+            const yearFilter = document.getElementById('yearFilter');
+            yearFilter.innerHTML = '<option value="">All Years</option>';
+            years.forEach(year => {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearFilter.appendChild(option);
+            });
+        }
+
+        // Populate sidebar
+        function populateSidebar() {
+            populateCategories();
+            populateDateArchive();
+            populatePopularTags();
+        }
+
+        // Populate categories sidebar
+        function populateCategories() {
+            const categories = {};
+            allPosts.forEach(post => {
+                categories[post.category] = (categories[post.category] || 0) + 1;
+            });
+            
+            const categoriesList = document.getElementById('categoriesList');
+            categoriesList.innerHTML = Object.entries(categories)
+                .sort((a, b) => b[1] - a[1])
+                .map(([category, count]) => `
+                    <li class="timeline-item">
+                        <a href="#" onclick="filterByCategory('${category}')">${category}</a>
+                        <span class="timeline-count">${count}</span>
+                    </li>
+                `).join('');
+        }
+
+        // Populate date archive
+        function populateDateArchive() {
+            const dates = {};
+            allPosts.forEach(post => {
+                const date = new Date(post.date);
+                const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+                const display = `${date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}`;
+                dates[key] = { display, count: (dates[key]?.count || 0) + 1 };
+            });
+            
+            const dateArchive = document.getElementById('dateArchive');
+            dateArchive.innerHTML = Object.entries(dates)
+                .sort((a, b) => b[0].localeCompare(a[0]))
+                .slice(0, 12) // Show last 12 months
+                .map(([key, data]) => `
+                    <li class="timeline-item">
+                        <a href="#" onclick="filterByDate('${key}')">${data.display}</a>
+                        <span class="timeline-count">${data.count}</span>
+                    </li>
+                `).join('');
+        }
+
+        // Populate popular tags
+        function populatePopularTags() {
+            const tags = {};
+            allPosts.forEach(post => {
+                post.tags.forEach(tag => {
+                    tags[tag] = (tags[tag] || 0) + 1;
+                });
+            });
+            
+            const popularTags = document.getElementById('popularTags');
+            popularTags.innerHTML = Object.entries(tags)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 10)
+                .map(([tag]) => `<span class="filter-tag" onclick="searchByTag('${tag}')">${tag}</span>`)
+                .join('');
+        }
+
+        // Handle search
+        function handleSearch() {
+            currentFilters.search = document.getElementById('archiveSearch').value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        // Handle category filter
+        function handleCategoryFilter(category) {
+            currentFilters.category = category;
+            applyFilters();
+        }
+
+        // Handle date filter
+        function handleDateFilter() {
+            currentFilters.year = document.getElementById('yearFilter').value;
+            currentFilters.month = document.getElementById('monthFilter').value;
+            applyFilters();
+        }
+
+        // Apply all filters
+        function applyFilters() {
+            filteredPosts = allPosts.filter(post => {
+                // Search filter
+                if (currentFilters.search) {
+                    const searchMatch = post.title.toLowerCase().includes(currentFilters.search) ||
+                                      post.excerpt.toLowerCase().includes(currentFilters.search) ||
+                                      post.tags.some(tag => tag.toLowerCase().includes(currentFilters.search));
+                    if (!searchMatch) return false;
+                }
+                
+                // Category filter
+                if (currentFilters.category !== 'all' && post.category !== currentFilters.category) {
+                    return false;
+                }
+                
+                // Date filters
+                const postDate = post.date.split('-');
+                if (currentFilters.year && postDate[0] !== currentFilters.year) {
+                    return false;
+                }
+                if (currentFilters.month && postDate[1] !== currentFilters.month) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            displayPosts();
+        }
+
+        // Clear all filters
+        function clearAllFilters() {
+            currentFilters = {
+                search: '',
+                category: 'all',
+                year: '',
+                month: ''
+            };
+            
+            document.getElementById('archiveSearch').value = '';
+            document.getElementById('yearFilter').value = '';
+            document.getElementById('monthFilter').value = '';
+            
+            // Reset active category filter
+            document.querySelectorAll('.filter-tag').forEach(tag => tag.classList.remove('active'));
+            document.querySelector('[data-category="all"]').classList.add('active');
+            
+            filteredPosts = [...allPosts];
+            displayPosts();
+        }
+
+        // Update active filter visual state
+        function updateActiveFilter(activeElement, selector) {
+            document.querySelectorAll(selector).forEach(el => el.classList.remove('active'));
+            activeElement.classList.add('active');
+        }
+
+        // Utility functions for sidebar interactions
+        function filterByCategory(category) {
+            currentFilters.category = category;
+            updateActiveFilter(document.querySelector(`[data-category="${category}"]`) || document.querySelector('[data-category="all"]'), '.filter-tag');
+            applyFilters();
+        }
+
+        function filterByDate(dateKey) {
+            const [year, month] = dateKey.split('-');
+            currentFilters.year = year;
+            currentFilters.month = month;
+            document.getElementById('yearFilter').value = year;
+            document.getElementById('monthFilter').value = month;
+            applyFilters();
+        }
+
+        function searchByTag(tag) {
+            document.getElementById('archiveSearch').value = tag;
+            currentFilters.search = tag.toLowerCase();
+            applyFilters();
+        }
+
+        // Utility function
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+    </script>
+</body>
+</html>
