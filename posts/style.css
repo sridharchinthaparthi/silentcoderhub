@@ -1,0 +1,233 @@
+/* Enhanced Post Header Styling */
+.post-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+}
+
+.post-header-content {
+    text-align: center;
+    background: linear-gradient(135deg, var(--background-light), var(--background));
+    padding: 3rem 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 3rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.post-meta-info {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.post-meta-info span {
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--background);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.post-meta-info span:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-meta-info span i {
+    color: var(--secondary-color);
+    font-size: 0.85rem;
+}
+
+.post-category {
+    background: var(--secondary-color) !important;
+    color: white !important;
+    font-weight: 600;
+}
+
+.post-category i {
+    color: white !important;
+}
+
+.post-title-main {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    font-weight: 400;
+    margin-top: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+}
+
+.post-content {
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.post-content h2 {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem 0;
+    color: var(--primary-color);
+}
+
+.post-content h3 {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 1rem 0;
+    color: var(--secondary-color);
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content ul, .post-content ol {
+    margin: 1rem 0 1rem 2rem;
+}
+
+.post-content li {
+    margin-bottom: 0.5rem;
+}
+
+.post-content blockquote {
+    background: var(--background-light);
+    border-left: 4px solid var(--secondary-color);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--text-light);
+}
+
+.post-content code {
+    background: var(--background-light);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.post-content pre {
+    background: var(--primary-color);
+    color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.post-content pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+}
+
+.back-to-blog {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    transition: var(--transition);
+}
+
+.back-to-blog:hover {
+    color: var(--primary-color);
+    transform: translateX(-2px);
+}
+
+.post-tags-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+    text-align: center;
+}
+
+.post-tags-section h4 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 3px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: var(--transition);
+}
+
+/* Enhanced responsive design */
+@media (max-width: 768px) {
+    .post-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    .hamburger {
+        display: flex;
+    }
+    
+    .post-header-content {
+        padding: 2rem 1rem;
+    }
+    
+    .post-title-main {
+        font-size: 2.2rem;
+    }
+    
+    .post-meta-info {
+        gap: 0.75rem;
+    }
+    
+    .post-meta-info span {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .post-meta-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .post-meta-info span {
+        min-width: 150px;
+        justify-content: center;
+    }
+    
+    .post-title-main {
+        font-size: 1.8rem;
+    }
+}

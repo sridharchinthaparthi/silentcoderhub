@@ -1,0 +1,70 @@
+{
+  "posts": [
+    {
+      "id": "post-ram-rom-cache-memory-explained",
+      "title": "RAM, ROM & Cache - What Sets Them Apart?",
+      "excerpt": "Curious about what really happens inside your computer? Let's dive into RAM, ROM, and Cache to see how each type of memory plays its own role in making computing possible.",
+      "date": "2025-09-21",
+      "category": "Computer Science",
+      "tags": ["RAM", "ROM", "Cache", "Computer Memory", "Hardware", "Computer Science"],
+      "author": "SilentCoderHub",
+      "readTime": "8 min read",
+      "slug": "ram-rom-cache-memory-explained"
+    },
+    {
+      "id": "post-input-vs-output-devices-explained",
+      "title": "Input vs Output Devices Explained: How Data Flows Between User and Machine", 
+      "excerpt": "Delve into the fascinating relationship between input and output devices. See how they enable our interaction with computers one keystroke, one pixel at a time!",
+      "date": "2025-09-20",
+      "category": "Computer Hardware",
+      "tags": ["Input Devices", "Output Devices", "Computer Hardware", "I/O Devices", "Technology Basics"],
+      "author": "SilentCoderHub",
+      "readTime": "8 min read",
+      "slug": "input-vs-output-devices-explained"
+    },
+    {
+      "id": "post-what-exactly-is-a-computer",
+      "title": "What Exactly is a Computer? Understanding the Essentials",
+      "excerpt": "Ever wondered what defines a computer? Let's dive into its core functions, key features, and its remarkable place in both work and life. From simple devices to powerful companions.",
+      "date": "2025-09-19",
+      "category": "Computer Basics",
+      "tags": ["Computer Science", "Technology", "Hardware", "Basics"],
+      "author": "SilentCoderHub",
+      "readTime": "6 min read",
+      "slug": "what-exactly-is-a-computer"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Computer Science",
+      "description": "Core computer science concepts and memory systems"
+    },
+    {
+      "name": "Computer Basics",
+      "description": "Fundamental concepts about computers and technology"
+    },
+    {
+      "name": "Computer Hardware",
+      "description": "Hardware components and device interactions"
+    },
+    {
+      "name": "Web Development",
+      "description": "Frontend and backend web development topics"
+    },
+    {
+      "name": "Programming",
+      "description": "Programming languages, concepts, and best practices"
+    },
+    {
+      "name": "AI & Machine Learning",
+      "description": "Artificial Intelligence and Machine Learning topics"
+    }
+  ],
+  "tags": [
+    "JavaScript", "HTML", "CSS", "Python", "React", "Node.js", 
+    "Computer Science", "Technology", "Hardware", "Software",
+    "AI", "Machine Learning", "Web Development", "Programming",
+    "RAM", "ROM", "Cache", "Computer Memory", "Input Devices", 
+    "Output Devices", "I/O Devices", "Technology Basics", "Basics"
+  ]
+}

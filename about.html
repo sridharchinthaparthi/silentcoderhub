@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - SilentCoderHub</title>
+    
+    <meta name="description" content="Learn about SilentCoderHub - Your source for technology insights, programming tutorials, and digital innovation content.">
+    <meta name="keywords" content="SilentCoderHub, About, Technology Blog, Programming, Web Development">
+    <meta name="author" content="SilentCoderHub">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        .page-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: var(--background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--background-light), var(--background));
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .profile-section {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--secondary-color);
+            box-shadow: var(--shadow);
+            flex-shrink: 0;
+        }
+        
+        .profile-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .profile-content p {
+            color: var(--text-color);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .skills-section {
+            margin-bottom: 3rem;
+        }
+        
+        .skills-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-card {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .skill-card h3 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .skill-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .journey-section {
+            background: var(--background-light);
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .journey-section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--secondary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+        }
+        
+        .timeline-item h3 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--secondary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .contact-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .page-container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-link {
+                justify-content: center;
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    
+    <!-- Main Content -->
+    <div class="page-container">
+        <div class="page-header">
+            <h1 class="page-title">About SilentCoderHub</h1>
+            <p class="page-subtitle">Passionate about technology, dedicated to sharing knowledge</p>
+        </div>
+
+        <div class="profile-section">
+            <img src="assets/logo.png" alt="SilentCoderHub Profile" class="profile-image">
+            <div class="profile-content">
+                <h2>Hello, I'm SilentCoderHub</h2>
+                <p>Welcome to my corner of the internet! I'm a passionate technologist and educator who believes in the power of sharing knowledge. Through this blog, I aim to make complex technical concepts accessible to everyone, from beginners taking their first steps into programming to experienced developers looking to expand their horizons.</p>
+                <p>My journey in technology has been driven by curiosity and a desire to solve problems through code. I've worked across various domains including web development, software engineering, and emerging technologies, and I'm excited to share these experiences with you.</p>
+            </div>
+        </div>
+
+        <div class="skills-section">
+            <h2>What I Focus On</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Programming</h3>
+                    <p>Deep dives into programming languages, best practices, and software development methodologies that help you write better code.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Frontend and backend technologies, frameworks, and tools that power modern web experiences.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI & Technology</h3>
+                    <p>Exploring artificial intelligence, machine learning, and emerging technologies shaping our future.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Computer Basics</h3>
+                    <p>Fundamental concepts about how computers work, making technology accessible to everyone.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <p>Mastering Python for scripting, automation, web development, and data analysis.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-simple"></i>
+                    </div>
+                    <h3>Data Science</h3>
+                    <p>Analyzing and visualizing data to extract insights, using tools like Python, Pandas, and machine learning.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="journey-section">
+            <h2>My Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>The Beginning</h3>
+                    <p>Started my journey with curiosity about how computers work, diving deep into the fundamentals of computing and programming.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Professional Development</h3>
+                    <p>Gained experience across various technologies and frameworks, working on projects ranging from simple websites to complex applications.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Teaching & Sharing</h3>
+                    <p>Discovered the joy of explaining complex concepts in simple terms, leading to the creation of SilentCoderHub.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Continuous Learning</h3>
+                    <p>Staying current with emerging technologies while helping others navigate their own learning journeys.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <h2 style="color: var(--primary-color); margin-bottom: 2rem;">Let's Connect</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                I'm always excited to connect with fellow developers, learners, and technology enthusiasts. 
+                Whether you have questions, suggestions, or just want to say hello, don't hesitate to reach out!
+            </p>
+            
+            <div class="contact-links">
+                <a href="contact.html" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    Get in Touch
+                </a>
+                <a href="archive.html" class="contact-link">
+                    <i class="fas fa-archive"></i>
+                    Browse Posts
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+
+    <!-- Back to Top Button -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top show">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    <script src="script.js"></script>
+
+</body>
+</html>
