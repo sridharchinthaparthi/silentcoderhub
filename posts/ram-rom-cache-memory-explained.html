@@ -79,20 +79,8 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="nav-container">
-                <a href="../index.html" class="logo">SilentCoderHub</a>
-                <ul class="nav-links">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../about.html">About</a></li>
-                    <li><a href="../archive.html">Archive</a></li>
-                    <li><a href="../contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>    <!-- Main Content -->
+    <div id="header"></div>
+    <!-- Main Content -->
     <div class="post-container">
         <a href="../index.html" class="back-to-blog">
             <i class="fas fa-arrow-left"></i> Back to Blog
@@ -264,6 +252,7 @@
                 document.getElementById("footer").innerHTML = data;
             });
     </script>
+    <script src="script.js"></script>
     <!-- Back to Top Button -->
     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top show">
         <i class="fas fa-chevron-up"></i>

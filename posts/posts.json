@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "id": "post-primary-vs-secondary-storage-explained",
+      "title": "Primary vs Secondary Storage: SSD vs HDD Explained",
+      "excerpt": "Explore the key differences, advantages, and uses of primary and secondary storage devices specifically SSDs and HDDs in data management.",
+      "date": "2025-09-22",
+      "category": "Computer Hardware",
+      "tags": ["Primary Storage", "Secondary Storage", "SSD", "HDD", "Computer Hardware", "Data Storage", "Technology Basics"],
+      "author": "SilentCoderHub",
+      "readTime": "10 min read",
+      "slug": "primary-vs-secondary-storage-explained"
+    },
+    {
       "id": "post-ram-rom-cache-memory-explained",
       "title": "RAM, ROM & Cache - What Sets Them Apart?",
       "excerpt": "Curious about what really happens inside your computer? Let's dive into RAM, ROM, and Cache to see how each type of memory plays its own role in making computing possible.",
